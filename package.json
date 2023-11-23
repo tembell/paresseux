@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "🐨 Lazy & Synchronous flows for modals interactions in React",
   "license": "MIT",
+  "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
