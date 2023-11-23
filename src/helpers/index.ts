@@ -1,1 +1,1 @@
-export * from "./withCloseModal";
+export * from "./withClose";
