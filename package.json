@@ -1,6 +1,6 @@
 {
   "name": "@tembell/paresseux",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "🐨 Lazy & Synchronous flows for modals interactions in React",
   "license": "MIT",
   "type": "module",
