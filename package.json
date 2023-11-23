@@ -24,8 +24,11 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
+    "dev": "vitest",
+    "test": "vitest run",
     "build": "tsup src/index.ts --format cjs,esm --dts",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "ci": "pnpm run lint && pnpm run test & pnpm run build"
   },
   "peerDependencies": {
     "react": "^18.2.0"
@@ -37,6 +40,8 @@
     "eslint": "^8.53.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
-    "typescript": "^5.2.2"
+    "tsup": "^8.0.1",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6"
   }
 }
