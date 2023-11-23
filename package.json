@@ -11,6 +11,7 @@
     "test": "vitest run",
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "format": "prettier **/*.{ts,tsx} --write",
     "ci": "pnpm run lint && pnpm run test & pnpm run build",
     "release": "pnpm run ci && changeset publish"
   },
@@ -25,6 +26,7 @@
     "eslint": "^8.53.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
+    "prettier": "^3.1.0",
     "tsup": "^8.0.1",
     "typescript": "^5.2.2",
     "vitest": "^0.34.6"
