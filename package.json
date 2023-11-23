@@ -1,0 +1,42 @@
+{
+  "name": "@tembell/paresseux",
+  "version": "0.1.0",
+  "description": "🐨 Lazy & Synchronous flows for modals interactions in React.",
+  "private": true,
+  "keywords": [
+    "react",
+    "modals",
+    "management",
+    "async",
+    "await",
+    "complex flow"
+  ],
+  "author": "Ariel Benichou",
+  "contributors": [
+    "Yair (https://github.com/yairopro)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tembell/paresseux.git"
+  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "typescript": "^5.2.2"
+  }
+}
