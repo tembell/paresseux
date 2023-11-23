@@ -1,7 +1,7 @@
-import { ReactNode, useState } from "react";
+import { type ReactNode, useState } from "react";
 import ModalsContext from "./ModalsContext";
 import React from "react";
-import { Modal } from "./types";
+import type { Modal } from "./types";
 
 export default function ModalsProvider({ children }: { children: ReactNode }) {
   const [modals, setModals] = useState<Modal[]>([]);

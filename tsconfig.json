@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    /* Base Options: */
+    "esModuleInterop": true,
+    "verbatimModuleSyntax": true,
+    "allowJs": true,
+    "moduleDetection": "force",
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": [

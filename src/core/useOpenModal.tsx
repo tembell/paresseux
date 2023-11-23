@@ -1,7 +1,7 @@
 import { cloneElement, useContext } from "react";
 import ModalsContext from "./ModalsContext";
 import { deferredPromise, uuidv4 } from "../utils";
-import { Modal } from "./types";
+import type { Modal } from "./types";
 
 type OpenModalOptions = { closeOnResolve?: boolean; onceClosed?: () => void };
 export default function useOpenModal() {

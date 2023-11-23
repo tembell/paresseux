@@ -1,1 +1,2 @@
-export * from "./withClose";
+import withClose from "./withClose";
+export {withClose}

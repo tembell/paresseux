@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "vitest",
     "test": "vitest run",
-    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "build": "tsup src/index.ts src/helpers/index.ts --format cjs,esm --dts",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier **/*.{ts,tsx} --write",
     "ci": "pnpm run lint && pnpm run test & pnpm run build",

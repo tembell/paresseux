@@ -1,5 +1,5 @@
 import { createElement } from "react";
-import { Resolvable } from "../core/types";
+import type { Resolvable } from "../core/types";
 
 /**
  * Helper HOC component to make the `resolve` as a void function before passing
