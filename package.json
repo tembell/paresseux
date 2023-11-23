@@ -3,7 +3,6 @@
   "version": "0.1.1",
   "description": "🐨 Lazy & Synchronous flows for modals interactions in React",
   "license": "MIT",
-  "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -49,5 +48,35 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tembell/paresseux.git"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./helpers": {
+      "import": {
+        "types": "./dist/helpers/index.d.mts",
+        "default": "./dist/helpers/index.mjs"
+      },
+      "require": {
+        "types": "./dist/helpers/index.d.cts",
+        "default": "./dist/helpers/index.cjs"
+      },
+      "default": {
+        "types": "./dist/helpers/index.d.ts",
+        "default": "./dist/helpers/index.js"
+      }
+    }
   }
 }
