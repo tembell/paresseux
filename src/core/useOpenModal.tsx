@@ -1,10 +1,9 @@
-import { cloneElement, useContext } from 'react';
-import ModalsContext from './ModalsContext';
-import { deferredPromise, uuidv4 } from '../utils';
-import { Modal } from './types';
+import { cloneElement, useContext } from "react";
+import ModalsContext from "./ModalsContext";
+import { deferredPromise, uuidv4 } from "../utils";
+import { Modal } from "./types";
 
-
-type OpenModalOptions = { closeOnResolve?: boolean; onceClosed?: () => void; };
+type OpenModalOptions = { closeOnResolve?: boolean; onceClosed?: () => void };
 export default function useOpenModal() {
   const setModals = useContext(ModalsContext);
   if (!setModals) {
@@ -12,8 +11,8 @@ export default function useOpenModal() {
   }
 
   return function openModal<T = unknown>(
-    originModal: Modal<T>['element'],
-    options: OpenModalOptions = { closeOnResolve: true }
+    originModal: Modal<T>["element"],
+    options: OpenModalOptions = { closeOnResolve: true },
   ) {
     const { promise, resolve: resolvePromise } = deferredPromise<T | undefined>();
 
@@ -33,7 +32,7 @@ export default function useOpenModal() {
 
     function close() {
       if (!setModals) {
-        throw new Error("FATAL: openModal :: resolve :: setModals is undefined")
+        throw new Error("FATAL: openModal :: resolve :: setModals is undefined");
       }
       setModals((prev) => [...prev.filter((m) => m.id !== entry.id)]);
       options.onceClosed?.();
@@ -43,5 +42,3 @@ export default function useOpenModal() {
     return Object.assign(promise, { resolve });
   };
 }
-
-

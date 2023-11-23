@@ -1,13 +1,9 @@
-import { ReactNode, useState } from 'react';
-import ModalsContext from './ModalsContext';
-import React from 'react';
-import { Modal } from './types';
+import { ReactNode, useState } from "react";
+import ModalsContext from "./ModalsContext";
+import React from "react";
+import { Modal } from "./types";
 
-export default function ModalsProvider({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function ModalsProvider({ children }: { children: ReactNode }) {
   const [modals, setModals] = useState<Modal[]>([]);
   return (
     <ModalsContext.Provider value={setModals}>
@@ -18,4 +14,3 @@ export default function ModalsProvider({
     </ModalsContext.Provider>
   );
 }
-
