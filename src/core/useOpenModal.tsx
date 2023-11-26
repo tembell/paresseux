@@ -3,7 +3,8 @@ import ModalsContext from "./ModalsContext";
 import { deferredPromise, uuidv4 } from "../utils";
 import type { Modal, Resolve } from "./types";
 
-type OpenModalOptions = { closeOnResolve?: boolean; onceClosed?: () => void };
+type OpenModalOptions = { onceClosed?: () => void };
+const defaultOptions: Partial<OpenModalOptions> = {};
 export default function useOpenModal() {
   const setModals = useContext(ModalsContext);
   if (!setModals) {
@@ -12,7 +13,7 @@ export default function useOpenModal() {
 
   return function openModal<TValue = unknown, TError = unknown>(
     modal: (resolve: Resolve<TValue>, reject: Resolve<TError>) => Modal<TValue>["element"],
-    options: OpenModalOptions = { closeOnResolve: true },
+    options: OpenModalOptions = defaultOptions,
   ) {
     const { promise, resolve: resolvePromise, reject: rejectPromise } = deferredPromise<TValue, TError>();
 
@@ -24,9 +25,7 @@ export default function useOpenModal() {
     };
 
     function resolve(value: TValue) {
-      if (options.closeOnResolve) {
-        close();
-      }
+      close();
       resolvePromise(value);
     }
 
