@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { ModalsProvider } from "@tembell/paresseux";
+import ModalsProvider from "../../../src/core/ModalsProvier";
 import App from "./App.tsx";
 import "./index.css";
 

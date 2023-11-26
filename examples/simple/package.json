@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tembell/paresseux": "^0.2.0",
+    "@tembell/paresseux": "file:../../",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

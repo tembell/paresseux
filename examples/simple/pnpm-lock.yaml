@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@tembell/paresseux':
-    specifier: ^0.2.0
-    version: 0.2.0(react@18.2.0)
+    specifier: file:~/personal/tembell/paresseux
+    version: file:../..(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -693,14 +693,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /@tembell/paresseux@0.2.0(react@18.2.0):
-    resolution: {integrity: sha512-zUQf8PZvw1tVL49Q3GSeZ8uCjTrlEpA7FCYEMwojjaJyEzTLEyv3MfvSNFfxcmqg0jOuXGxgT6D6IJSNPrTU/Q==}
-    peerDependencies:
-      react: ^18.2.0
-    dependencies:
-      react: 18.2.0
-    dev: false
 
   /@types/babel__core@7.20.5:
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -2241,3 +2233,13 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  file:../..(react@18.2.0):
+    resolution: {directory: ../.., type: directory}
+    id: file:../..
+    name: '@tembell/paresseux'
+    peerDependencies:
+      react: ^18.2.0
+    dependencies:
+      react: 18.2.0
+    dev: false
