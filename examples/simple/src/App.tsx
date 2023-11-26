@@ -1,18 +1,26 @@
 import { useState } from "react";
 import { useOpenModal } from "@tembell/paresseux"
-import ChooseMathOpModal, { MathOp } from "./components/ChooseMathOpModal";
+import ChooseMathOpModal from "./components/ChooseMathOpModal";
 import NumbersModal from "./components/NumbersModal";
 
 function App() {
   const openModal = useOpenModal();
   const [count, setCount] = useState(0);
   const addModalFlow = async () => {
-    const mathOp = await openModal<MathOp>(<ChooseMathOpModal />);
+    const mathOp = await openModal<"add" | "remove" | undefined>((resolve) =>
+      <ChooseMathOpModal
+        onAdd={() => resolve("add")}
+        onRemove={() => resolve("remove")}
+        onCancel={() => resolve(undefined)} />
+    );
     if (!mathOp) return;
 
-    // FIXME: why does other props not show in ts types?
-    const amount = await openModal<number>(<NumbersModal title="How Much?" />);
-    // FIXME: why this must be undefined?
+    const amount = await openModal<number | undefined>((resolve) =>
+      <NumbersModal
+        title="How Much?"
+        onCancel={() => resolve(undefined)}
+        onSubmit={(v) => resolve(v)} />
+    );
     if (!amount) return;
 
     const mathOpMult = mathOp === "add" ? 1 : -1;

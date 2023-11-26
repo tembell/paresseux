@@ -46,8 +46,11 @@ export default function YourComponent() {
 
   async function takeAction() {
     type SlothAction = 'sleep' | 'eat' | undefined;
-    const slothAction = await openModal<SlothAction>(
-      <SlothActionModal />
+    const slothAction = await openModal<SlothAction>((resolve) =>
+      <SlothActionModal 
+        onCancel={() => resolve(undefined)}
+        onChooseAction={(value) => resolve(value)}
+      />
     );
 
     // undefined for cancel
@@ -59,8 +62,11 @@ export default function YourComponent() {
     }
 
     type Food = 'leaves' | 'fruits' | 'insects' | undefined;
-    const foodChoice = await openModal<Food>(
-      <FoodModal />
+    const foodChoice = await openModal<Food>((resolve) =>
+     <FoodModal 
+        onCancel={() => resolve(undefined)}
+        onChooseAction={(value) => resolve(value)}
+      />
     );
 
     // undefined for cancel
@@ -71,12 +77,42 @@ export default function YourComponent() {
 
   return (
     <>
-      <h1>Hey Slothy, What do you want to do today?</h1>
+      <h1>Hey Mr.Sloth, What do you want to do today?</h1>
       <Button onClick={takeAction}>Take Action</Button>
     </>
   );
 }
 ```
+
+You can also go to the `./examples/simple` React App to see a full app usage.
+
+## Typescript
+To be able to know what the return type is of the `openModal` you need
+to provide it a type, not giving a type will result in `unknown`.
+```tsx
+// ----- No Type ------
+const someValue = await openModal((resolve)=> 
+  <div 
+    onClick={() => resolve("click")}>
+      Hello World
+  </div>
+);
+
+// `someValue` will contain "click" but will be typed to `unknown` 
+
+
+
+// ----- With Type ------
+const someValue = await openModal<'click'>((resolve)=> 
+  <div 
+    onClick={() => resolve("click")}>
+      Hello World
+  </div>
+);
+// `someValue` will contain "click" and will be typed to `"click"` 
+```
+
+
 ## Contributors
 
 - **Yair** - [@yairorpo](https://github.com/yairorpo)

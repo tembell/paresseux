@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@tembell/paresseux':
-    specifier: ^0.1.2
-    version: 0.1.2(react@18.2.0)
+    specifier: ^0.2.0
+    version: 0.2.0(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -694,8 +694,8 @@ packages:
     dev: true
     optional: true
 
-  /@tembell/paresseux@0.1.2(react@18.2.0):
-    resolution: {integrity: sha512-9hva6an4mrdQTpRPw3+eXwoZqxXYhR8W23o9T048Vyjnb0RLZvvwMisF+m8+fBd3c3YR0TlRr/unuB9FZfGjXw==}
+  /@tembell/paresseux@0.2.0(react@18.2.0):
+    resolution: {integrity: sha512-zUQf8PZvw1tVL49Q3GSeZ8uCjTrlEpA7FCYEMwojjaJyEzTLEyv3MfvSNFfxcmqg0jOuXGxgT6D6IJSNPrTU/Q==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
