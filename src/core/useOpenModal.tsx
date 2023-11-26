@@ -1,7 +1,7 @@
 import { cloneElement, useContext } from "react";
 import ModalsContext from "./ModalsContext";
 import { deferredPromise, uuidv4 } from "../utils";
-import type { Modal } from "./types";
+import type { Modal, Resolve } from "./types";
 
 type OpenModalOptions = { closeOnResolve?: boolean; onceClosed?: () => void };
 export default function useOpenModal() {
@@ -11,19 +11,19 @@ export default function useOpenModal() {
   }
 
   return function openModal<T = unknown>(
-    originModal: Modal<T>["element"],
+    modal: (resolve: Resolve<T>) => Modal<T>["element"],
     options: OpenModalOptions = { closeOnResolve: true },
   ) {
-    const { promise, resolve: resolvePromise } = deferredPromise<T | undefined>();
+    const { promise, resolve: resolvePromise } = deferredPromise<T>();
 
-    const element = cloneElement(originModal, { resolve });
+    const element = cloneElement(modal(resolve));
     const entry: Modal<T> = {
       id: uuidv4(),
       element,
       resolve,
     };
 
-    function resolve(value?: T) {
+    function resolve(value: T) {
       if (options.closeOnResolve) {
         close();
       }
