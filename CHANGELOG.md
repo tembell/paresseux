@@ -1,5 +1,11 @@
 # @tembell/paresseux
 
+## 0.2.0
+
+### Minor Changes
+
+- 644adb1: New API for the openModal function, gets a callback function giving you the `resolve`
+
 ## 0.1.2
 
 ### Patch Changes
