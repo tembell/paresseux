@@ -1,5 +1,11 @@
 # @tembell/paresseux
 
+## 0.2.1
+
+### Patch Changes
+
+- 0175457: Updated exmaples/simple app, and README example
+
 ## 0.2.0
 
 ### Minor Changes
