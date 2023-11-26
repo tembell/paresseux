@@ -45,34 +45,33 @@ export default function YourComponent() {
   const openModal = useOpenModal();
 
   async function takeAction() {
-    type SlothAction = 'sleep' | 'eat' | undefined;
-    const slothAction = await openModal<SlothAction>((resolve) =>
-      <SlothActionModal 
-        onCancel={() => resolve(undefined)}
-        onChooseAction={(value) => resolve(value)}
-      />
-    );
+    try {
+      type SlothAction = 'sleep' | 'eat' | undefined;
+      const slothAction = await openModal<SlothAction>((resolve, reject) =>
+        <SlothActionModal 
+          onCancel={() => reject()}
+          onChooseAction={(value) => resolve(value)}
+        />
+      );
 
-    // undefined for cancel
-    if (!slothAction) return;
+      if (slothAction === 'sleep') {
+        // Go to sleep ...
+        return;
+      }
 
-    if (slothAction === 'sleep') {
-      // Go to sleep ...
-      return;
+      type Food = 'leaves' | 'fruits' | 'insects' | undefined;
+      const foodChoice = await openModal<Food>((resolve, reject) =>
+      <FoodModal 
+          onCancel={() => reject()}
+          onChooseAction={(value) => resolve(value)}
+        />
+      );
+
+      // Eat chosen fruit...
+    } catch (err) {
+      // do nothing for cancel
+      return; 
     }
-
-    type Food = 'leaves' | 'fruits' | 'insects' | undefined;
-    const foodChoice = await openModal<Food>((resolve) =>
-     <FoodModal 
-        onCancel={() => resolve(undefined)}
-        onChooseAction={(value) => resolve(value)}
-      />
-    );
-
-    // undefined for cancel
-    if (!foodChoice) return;
-
-    // Eat chosen fruit...
   }
 
   return (
@@ -91,26 +90,48 @@ To be able to know what the return type is of the `openModal` you need
 to provide it a type, not giving a type will result in `unknown`.
 ```tsx
 // ----- No Type ------
-const someValue = await openModal((resolve)=> 
-  <div 
-    onClick={() => resolve("click")}>
-      Hello World
-  </div>
-);
+try {
+  const someValue = await openModal((resolve, reject)=> 
+    <div>
+      <div 
+        onClick={() => resolve("yay")}>
+          Resolve
+      </div>
+      <div 
+        onClick={() => reject("nay")}>
+          Reject
+      </div>
+    </div>
+  );
+  console.log({someValue}) // `someValue` will contain "yay" but will be typed to `unknown` 
+} catch(error) {
+  console.log({error}) // `error` will contain "nay" but will be typed to `unknown` 
+}
 
-// `someValue` will contain "click" but will be typed to `unknown` 
 
 
 
 // ----- With Type ------
-const someValue = await openModal<'click'>((resolve)=> 
-  <div 
-    onClick={() => resolve("click")}>
-      Hello World
-  </div>
-);
-// `someValue` will contain "click" and will be typed to `"click"` 
+try {
+  const someValue = await openModal<"yay", "nay">((resolve, reject)=> 
+    <div>
+      <div 
+        onClick={() => resolve("yay")}>
+          Resolve
+      </div>
+      <div 
+        onClick={() => reject("nay")}>
+          Reject
+      </div>
+    </div>
+  );
+  console.log({someValue}) // `someValue` will contain "yay" and will be typed to `"yay"` 
+} catch(error) {
+  console.log({error}) // `error` will contain "nay" but will STILL be typed to `unknown` 
+}
 ```
+
+The types also help you when passing values to `resolve` and `reject`
 
 
 ## Contributors

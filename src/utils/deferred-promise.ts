@@ -1,7 +1,7 @@
-export function deferredPromise<T>() {
-  let resolve: ((value: T | PromiseLike<T>) => void) | undefined;
-  let reject: ((reason?: unknown) => void) | undefined;
-  const promise = new Promise<T>((res, rej) => {
+export function deferredPromise<TResolve, TReject>() {
+  let resolve: ((value: TResolve | PromiseLike<TResolve>) => void) | undefined;
+  let reject: ((value?: TReject) => void) | undefined;
+  const promise = new Promise<TResolve>((res, rej) => {
     resolve = res;
     reject = rej;
   });

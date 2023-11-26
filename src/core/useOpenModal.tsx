@@ -10,24 +10,29 @@ export default function useOpenModal() {
     throw new Error("Trying to accesse useOpenModal outside of context");
   }
 
-  return function openModal<T = unknown>(
-    modal: (resolve: Resolve<T>) => Modal<T>["element"],
+  return function openModal<TValue = unknown, TError = unknown>(
+    modal: (resolve: Resolve<TValue>, reject: Resolve<TError>) => Modal<TValue>["element"],
     options: OpenModalOptions = { closeOnResolve: true },
   ) {
-    const { promise, resolve: resolvePromise } = deferredPromise<T>();
+    const { promise, resolve: resolvePromise, reject: rejectPromise } = deferredPromise<TValue, TError>();
 
-    const element = cloneElement(modal(resolve));
-    const entry: Modal<T> = {
+    const element = cloneElement(modal(resolve, reject));
+    const entry: Modal<TValue> = {
       id: uuidv4(),
       element,
       resolve,
     };
 
-    function resolve(value: T) {
+    function resolve(value: TValue) {
       if (options.closeOnResolve) {
         close();
       }
       resolvePromise(value);
+    }
+
+    function reject(value?: TError) {
+      close();
+      rejectPromise(value);
     }
 
     function close() {
@@ -39,6 +44,6 @@ export default function useOpenModal() {
     }
 
     setModals((prev) => [...prev, entry]);
-    return Object.assign(promise, { resolve });
+    return Object.assign(promise, { resolve, reject });
   };
 }
