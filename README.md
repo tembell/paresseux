@@ -1,6 +1,6 @@
 ![Paresseux Logo](./docs/assets/artwork.jpg)
 
-Paresseux is a React modal management library designed to streamline the handling of modals in a linear fashion, especially within complex workflows. It provides a convenient way to manage modals and their interactions while keeping your codebase clean and maintainable.
+Paresseux (French word for "sloth" or "lazy", pronounced `/pa.ʁɛ.sø/`, like "par-eh-suh")  is a React modal management library designed to streamline the handling of modals in a linear fashion, especially within complex workflows. It provides a convenient way to manage modals and their interactions while keeping your codebase clean and maintainable.
 
 ## Getting Started
 
