@@ -8,7 +8,7 @@ const defaultOptions: Partial<OpenModalOptions> = {};
 export default function useOpenModal() {
   const setModals = useContext(ModalsContext);
   if (!setModals) {
-    throw new Error("Trying to accesse useOpenModal outside of context");
+    throw new Error("Trying to access useOpenModal outside of context");
   }
 
   return function openModal<TValue = unknown, TError = unknown>(
