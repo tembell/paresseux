@@ -1,3 +1,4 @@
+"use client";
 import { createContext, type Dispatch, type SetStateAction } from 'react';
 import type { Modal } from './types';
 
