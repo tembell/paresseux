@@ -1,5 +1,11 @@
 # @tembell/paresseux
 
+## 0.4.0
+
+### Minor Changes
+
+- bc50bf5: Fix ModalsProvider to work with server-side rendering
+
 ## 0.3.1
 
 ### Patch Changes
