@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import ModalsProvider from "../../../src/core/ModalsProvier";
+import ModalsProvider from "../../../src/core/ModalsProvider";
 import App from "./App.tsx";
 import "./index.css";
 
